@@ -1,0 +1,70 @@
+<ion-view cache-view="false" view-title="Sunday School Lessons 2018" name="dashboard-view">
+
+	<!--<ion-pane  style="background-color: #1A84B0">-->
+	<ion-pane  style="background-color: #FFF">
+		<ion-content scroll="true">
+			<section>
+				<div class="row">
+
+					<div class="col text-center ui-gradient-deepblue padding">
+						<button ng-click="previous()" class="button button-calm ion-ios-rewind"></button>
+						<button class="button button-light">{{newDate|date:"MMMM dd, yyyy"}}</button>
+						<button ng-click="next()" class="button  button-calm ion-ios-fastforward"> </button>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col text-center card calm-bg">
+						<a ng-click="openModal()" class="item ">
+							<h2><span class="dark">Week {{weekNumber}} Lessson </span></h2>
+							<p><span class="dark" style="text-transform: capitalize; font-weight: bold; font-size: 18px;">{{current.title}}</span></p>
+						</a>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col padding text-center">
+						<div class="list">
+							<div class="item item-icon-left" ion-datetime-picker date ng-model="row.appDate">
+								<i class="icon ion-ios-calendar positive"></i>
+								Glossary? Select date:
+								<strong>{{row.appDate| date: "yyyy-MM-dd"}}</strong>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col padding text-center">
+						<a class="button ion-search button-calm" href="#/app/dashboard/{{row.appDate| date: 'yyyy-MM-dd'}}"> Preview </a>
+					</div>
+				</div>
+
+				</div>
+			</section>
+		</ion-content>
+
+
+		<!--Modal-->
+		<script id="templates/modal.html" type="text/ng-template">
+			<ion-modal-view>
+
+				<ion-header-bar class="bar-calm fix-buttons">
+					<a class="button" ng-click="closeModal()"><i class="icon ion-ios-undo"></i> Back</a>
+					<h1 class="title" style="text-transform: capitalize;">Sunday School Lessons 2018</h1>
+				</ion-header-bar>
+
+				<ion-content has-bouncing="true">
+					<div class="row col padding">
+						<!--<h4 style="text-transform: capitalize; text-align: center">{{newDate|date:"EEEE dd, MMMM"}}</h4>-->
+						<h4 style="text-transform: capitalize; text-align: center">Week {{weekNumber}}</h4>
+						<h4 style="text-transform: capitalize; text-align: center">{{current.post_title}}</h4>
+						<p style="text-align: justify; font-size: 16px; line-height:25px; padding: 5px 15px 5px 15px;" ng-bind-html="current.message"></p>
+					</div>
+				</ion-content>
+
+			</ion-modal-view>
+		</script>
+
+
+	</ion-pane>
+</ion-view>
